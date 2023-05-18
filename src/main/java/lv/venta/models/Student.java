@@ -45,6 +45,7 @@ public class Student {
 	private String surname;
 	
 	@OneToMany(mappedBy = "student")
+	@ToString.Exclude    //lai neaiziet bezgalīgajā ciklā
 	private Collection<Grade> grades; 
 	
 

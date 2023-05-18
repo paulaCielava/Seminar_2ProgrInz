@@ -53,6 +53,7 @@ public class Course {
 	
 	
 	@OneToMany(mappedBy = "course")
+	@ToString.Exclude
 	private Collection<Grade> grades;
 
 	//argumenta konstruktors 
