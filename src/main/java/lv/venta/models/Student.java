@@ -44,7 +44,7 @@ public class Student {
 	@Size(min = 3, max = 15)
 	private String surname;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "student")
 	private Collection<Grade> grades; 
 	
 
