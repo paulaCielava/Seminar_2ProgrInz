@@ -59,9 +59,6 @@ public class Professor {
 	
 
 	
-	
-	
-	
 	public Professor(String name, String surname, Degree degree) {
 		this.name = name;
 		this.surname = surname;
