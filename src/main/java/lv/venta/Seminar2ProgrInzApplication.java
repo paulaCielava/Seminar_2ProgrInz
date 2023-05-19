@@ -1,5 +1,8 @@
 package lv.venta;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -33,8 +36,10 @@ public class Seminar2ProgrInzApplication {
 				
 				Professor pr1 = new Professor("Karina", "Skirmante", Degree.mg);
 				Professor pr2 = new Professor("Martins", "Saulītis", Degree.mg);
+				Professor pr3 = new Professor("Raita", "Rollande", Degree.phd);
 				profRepo.save(pr1);
 				profRepo.save(pr2);
+				profRepo.save(pr3);
 				
 				
 				Student st1 = new Student("Janis", "Berzins");
@@ -42,11 +47,23 @@ public class Seminar2ProgrInzApplication {
 				studRepo.save(st1);
 				studRepo.save(st2);
 				
-				
-				Course c1 = new Course("Java", 4, pr1);
-				Course c2 = new Course("Datubazes", 4, pr2);
+				// TODO uztaisīt kursu kuram ir piesaistīti 2 profesori
+				// TODO uztaisīt gadījumu, kad viens profesors pasniedz divus kursus 
+				Course c1 = new Course("Proginz i", 4, new ArrayList<>(Arrays.asList(pr1, pr3))); //vairāku pasniedzēju pievienošana vienam kursam 
+				Course c2 = new Course("Datubazes", 4, new ArrayList<>(Arrays.asList(pr2)));
+				Course c3 = new Course("Datu struktūras", 2, new ArrayList<>(Arrays.asList(pr1)));
 				courRepo.save(c1);
 				courRepo.save(c2);
+				courRepo.save(c3);
+				
+				
+				c1.addProfessor(pr1);
+				c1.addProfessor(pr3);
+				c2.addProfessor(pr2);
+				c3.addProfessor(pr1);
+				courRepo.save(c1);  // saglabā
+				courRepo.save(c2);  // datu 
+				courRepo.save(c3);  // bāzē
 				
 				
 				grRepo.save(new Grade(10, st1, c1)); //Jānis nopelnija 10 JAVA
@@ -54,8 +71,9 @@ public class Seminar2ProgrInzApplication {
 				grRepo.save(new Grade(10, st2, c2)); 
 				grRepo.save(new Grade(9, st1, c1));
 				
-				
-				
+				//TODO izveidot jaunu zaru pāriet uz to (git branch xxx, git checkout xxx)
+				//TODO pārveidot saiti starp profesoru un kursu uz ManyToMany
+				//TODO pamainīt testModel funkciju, ieliekot 1.profesoram 2 kursus un 1.kursam, ka to pasniedz abi profesori		
 			}
 		};
 	}
