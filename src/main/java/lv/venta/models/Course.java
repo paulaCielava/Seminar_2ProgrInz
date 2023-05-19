@@ -62,10 +62,10 @@ public class Course {
 	private Collection<Grade> grades;
 
 	//argumenta konstruktors 
-	public Course(String title, int creditPoints, Professor professor) {
+	public Course(String title, int creditPoints, ArrayList<Professor> professors) {
 		this.title = title;
 		this.creditPoints = creditPoints;
-		//this.professor = professor;
+		this.professors = professors;
 	}
 	
 	public void addProfessor(Professor inputProfessor) {
@@ -74,7 +74,7 @@ public class Course {
 		}
 	}
 	
-	
+	//izveidot kursa dzēšanas funkciju
 	
 	
 	
