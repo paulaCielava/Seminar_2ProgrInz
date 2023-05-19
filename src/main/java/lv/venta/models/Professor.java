@@ -69,13 +69,14 @@ public class Professor {
 		this.degree = degree;
 	}
 	
+	// šis ir tikai ManyToMany gadījumā
 	public void addCourse (Course inputCourse) {
 		if (!courses.contains(inputCourse)) {
 			courses.add(inputCourse);
 		}
 	}
 	
-	
+	//izveidot profecora dzēšanas funkciju
 	
 	
 }
