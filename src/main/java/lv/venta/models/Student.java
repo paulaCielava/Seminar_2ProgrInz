@@ -24,25 +24,8 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Student {
+public class Student extends Person{
 
-	@Setter(value = AccessLevel.NONE) // -> noņem anotāciju (set funkciju) tieši šim mainīgajam
-	@Column(name = "Ids")
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long ids; // ids - id student
-	
-	@Column(name = "Name")
-	@NotNull
-	@Pattern(regexp = "[A-ZĀŠĒĢŪĪĶĻŅŽ]{1}[a-zēīļķšāžņūģ\\ ]+")
-	@Size(min = 3, max = 15)
-	private String name;
-	
-	@Column(name = "Surname")
-	@NotNull
-	@Pattern(regexp = "[A-ZĀŠĒĢŪĪĶĻŅŽ]{1}[a-zēīļķšāžņūģ\\ ]+")
-	@Size(min = 3, max = 15)
-	private String surname;
 	
 	@OneToMany(mappedBy = "student")
 	@ToString.Exclude    //lai neaiziet bezgalīgajā ciklā
@@ -50,8 +33,7 @@ public class Student {
 	
 
 	public Student(String name, String surname) {
-		this.name = name;
-		this.surname = surname;
+		super(name, surname);
 	}
 	
 	

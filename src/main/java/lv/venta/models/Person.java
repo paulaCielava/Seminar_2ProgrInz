@@ -39,4 +39,13 @@ public class Person {
 	@Pattern(regexp = "[A-ZĀŠĒĢŪĪĶĻŅŽ]{1}[a-zēīļķšāžņūģ\\ ]+")
 	@Size(min = 3, max = 15)
 	private String surname;
+
+	public Person(
+			@NotNull @Pattern(regexp = "[A-ZĀŠĒĢŪĪĶĻŅŽ]{1}[a-zēīļķšāžņūģ\\ ]+") @Size(min = 3, max = 15) String name,
+			@NotNull @Pattern(regexp = "[A-ZĀŠĒĢŪĪĶĻŅŽ]{1}[a-zēīļķšāžņūģ\\ ]+") @Size(min = 3, max = 15) String surname) {
+		this.name = name;
+		this.surname = surname;
+	}
+	
+	
 }
